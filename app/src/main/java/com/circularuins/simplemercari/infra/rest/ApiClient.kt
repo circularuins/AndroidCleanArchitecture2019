@@ -1,7 +1,7 @@
-package infra.rest
+package com.circularuins.simplemercari.infra.rest
 
-import infra.data.Item
-import infra.data.Master
+import com.circularuins.simplemercari.infra.data.Item
+import com.circularuins.simplemercari.infra.data.Master
 import io.reactivex.Single
 import retrofit2.http.GET
 

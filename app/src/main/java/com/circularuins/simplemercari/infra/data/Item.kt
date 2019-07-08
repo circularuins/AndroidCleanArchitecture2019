@@ -1,4 +1,4 @@
-package infra.data
+package com.circularuins.simplemercari.infra.data
 
 import com.google.gson.annotations.SerializedName
 
