@@ -7,15 +7,15 @@ import retrofit2.http.GET
 
 interface ApiClient {
 
-    @GET("master")
+    @GET("/master.json")
     fun getMaster(): Single<List<Master>>
 
-    @GET("all")
+    @GET("/all.json")
     fun getAll(): Single<List<Item>>
 
-    @GET("men")
+    @GET("/men.json")
     fun getMen(): Single<List<Item>>
 
-    @GET("women")
+    @GET("/women.json")
     fun getWomen(): Single<List<Item>>
 }
