@@ -4,5 +4,5 @@ data class Master(
 
     val name: String,
 
-    val data: String
+    val requestType: String
 )
