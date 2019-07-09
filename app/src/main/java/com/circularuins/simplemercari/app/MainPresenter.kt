@@ -10,6 +10,7 @@ class MainPresenter(
 
     @SuppressLint("CheckResult")
     override fun start() {
+        view.initToolBar()
         view.showProgress()
 
         useCase.fetchMasterData()

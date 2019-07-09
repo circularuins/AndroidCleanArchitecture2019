@@ -5,6 +5,7 @@ import com.circularuins.simplemercari.domain.model.Master
 interface MainContract {
 
     interface View {
+        fun initToolBar()
         fun showProgress()
         fun hideProgress()
         fun setTab(masters: List<Master>)
