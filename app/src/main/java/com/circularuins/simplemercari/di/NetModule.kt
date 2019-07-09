@@ -1,6 +1,10 @@
 package com.circularuins.simplemercari.di
 
+import com.circularuins.simplemercari.domain.repository.ItemRepository
+import com.circularuins.simplemercari.domain.repository.MasterRepository
 import com.circularuins.simplemercari.infra.SchedulerProvider
+import com.circularuins.simplemercari.infra.repository.ItemRepositoryImpl
+import com.circularuins.simplemercari.infra.repository.MasterRepositoryImpl
 import com.circularuins.simplemercari.infra.rest.ApiClient
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
@@ -36,4 +40,14 @@ class NetModule {
 
     @Provides
     fun provideSchedulerProvider(): SchedulerProvider = SchedulerProvider()
+
+    @Provides
+    fun provideMasterRepository(client: ApiClient,
+        schedulerProvider: SchedulerProvider): MasterRepository =
+        MasterRepositoryImpl(client, schedulerProvider.io, schedulerProvider.ui)
+
+    @Provides
+    fun provideItemRepository(client: ApiClient,
+        schedulerProvider: SchedulerProvider): ItemRepository =
+        ItemRepositoryImpl(client, schedulerProvider.io, schedulerProvider.ui)
 }
