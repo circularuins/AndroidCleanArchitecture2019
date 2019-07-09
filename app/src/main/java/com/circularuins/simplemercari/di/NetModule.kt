@@ -28,7 +28,7 @@ class NetModule {
     @Provides
     @Singleton
     fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-        .baseUrl("https://s3-ap-northeast-1.amazonaws.com/m-et/Android/json")
+        .baseUrl(ApiClient.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()

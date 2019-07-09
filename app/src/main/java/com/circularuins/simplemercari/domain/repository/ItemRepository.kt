@@ -5,9 +5,5 @@ import io.reactivex.Single
 
 interface ItemRepository {
 
-    fun getAll(): Single<List<Item>>
-
-    fun getMen(): Single<List<Item>>
-
-    fun getWomen(): Single<List<Item>>
+    fun getItems(type: String): Single<List<Item>>
 }

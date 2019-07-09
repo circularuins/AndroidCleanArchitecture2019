@@ -4,18 +4,17 @@ import com.circularuins.simplemercari.infra.data.Item
 import com.circularuins.simplemercari.infra.data.Master
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiClient {
 
-    @GET("/master.json")
+    companion object {
+        const val BASE_URL = "https://s3-ap-northeast-1.amazonaws.com/m-et/Android/json/"
+    }
+
+    @GET("master.json")
     fun getMaster(): Single<List<Master>>
 
-    @GET("/all.json")
-    fun getAll(): Single<List<Item>>
-
-    @GET("/men.json")
-    fun getMen(): Single<List<Item>>
-
-    @GET("/women.json")
-    fun getWomen(): Single<List<Item>>
+    @GET("{type}.json")
+    fun getItems(@Path("type") type: String): Single<List<Item>>
 }

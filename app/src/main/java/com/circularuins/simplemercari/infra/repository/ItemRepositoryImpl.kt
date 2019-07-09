@@ -11,17 +11,7 @@ class ItemRepositoryImpl(private val client: ApiClient,
     private val subscribe: Scheduler,
     private val observe: Scheduler) : ItemRepository {
 
-    override fun getAll(): Single<List<Item>> = client.getAll()
-        .map { it.map { item -> item.convert() } }
-        .subscribeOn(subscribe)
-        .observeOn(observe)
-
-    override fun getMen(): Single<List<Item>> = client.getMen()
-        .map { it.map { item -> item.convert() } }
-        .subscribeOn(subscribe)
-        .observeOn(observe)
-
-    override fun getWomen(): Single<List<Item>> = client.getWomen()
+    override fun getItems(type: String): Single<List<Item>> = client.getItems(type)
         .map { it.map { item -> item.convert() } }
         .subscribeOn(subscribe)
         .observeOn(observe)
