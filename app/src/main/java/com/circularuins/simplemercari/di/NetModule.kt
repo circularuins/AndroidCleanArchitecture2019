@@ -39,6 +39,7 @@ class NetModule {
         retrofit.create(ApiClient::class.java)
 
     @Provides
+    @Singleton
     fun provideSchedulerProvider(): SchedulerProvider = SchedulerProvider()
 
     @Provides
