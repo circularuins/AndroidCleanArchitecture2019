@@ -6,7 +6,7 @@ data class Item(
 
     val name: String,
 
-    val status: String,
+    val isSoldOut: Boolean,
 
     val numLikes: Int,
 

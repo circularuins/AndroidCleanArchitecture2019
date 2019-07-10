@@ -8,13 +8,19 @@ fun Item.convert(): com.circularuins.simplemercari.app.viewdata.Item {
     return com.circularuins.simplemercari.app.viewdata.Item(
         id,
         name,
-        status, // TODO: モデルでEnumへ変換する。ここはbooleanにする
+        isSoldOut(),
         numLikes,
         numComments,
         numToCurrency(price),
         photo
     )
 }
+
+fun Item.isSoldOut(): Boolean =
+    when (status) {
+        Item.Status.SoldOut -> true
+        Item.Status.OnSale, Item.Status.None -> false
+    }
 
 fun numToCurrency(num: Int): String {
     val format = NumberFormat.getCurrencyInstance(Locale.US)
