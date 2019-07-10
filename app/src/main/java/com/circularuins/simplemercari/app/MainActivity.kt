@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             }
         }
         view_pager.adapter = adapter
+        tab_layout.setupWithViewPager(view_pager)
     }
 
     override fun showError(error: Throwable) {
