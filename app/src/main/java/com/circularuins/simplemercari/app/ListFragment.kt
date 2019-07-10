@@ -5,12 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
+import com.circularuins.simplemercari.app.viewdata.Item
+import com.circularuins.simplemercari.domain.repository.ItemRepository
+import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import kotlinx.android.synthetic.main.fragment_list.*
+import javax.inject.Inject
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), ListContract.View {
 
     private lateinit var requestType: String
+
+    @Inject
+    lateinit var repository: ItemRepository
 
     companion object {
         private const val REQUEST_TYPE = "request_type"
@@ -33,9 +41,35 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_list, container, false)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_list, container, false)
+
+        (activity?.application as MercariApplication).component.inject(this)
+
+        // TODO: presenter生成もDaggerで
+        val presenter = ListPresenter(this, ListUseCase(repository))
+        presenter.start(requestType)
+
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         sampleText.text = requestType
+    }
+
+    override fun showProgress() {
+        // TODO:
+    }
+
+    override fun hideProgress() {
+        // TODO:
+    }
+
+    override fun setList(masters: List<Item>) {
+        // TODO:
+    }
+
+    override fun showError(error: Throwable) {
+        // TODO:
     }
 }
