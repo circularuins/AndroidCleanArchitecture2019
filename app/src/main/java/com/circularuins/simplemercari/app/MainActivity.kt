@@ -9,7 +9,7 @@ import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository
-import com.circularuins.simplemercari.domain.usecase.MainUseCase
+import com.circularuins.simplemercari.domain.usecase.StartUseCase
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         (application as MercariApplication).component.inject(this)
 
         // TODO: presenter生成もDaggerで
-        val presenter = MainPresenter(this, MainUseCase(repository))
+        val presenter = MainPresenter(this, StartUseCase(repository))
         presenter.start()
     }
 
