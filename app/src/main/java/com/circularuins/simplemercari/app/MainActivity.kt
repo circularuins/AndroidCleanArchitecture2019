@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun initToolBar() {
         toolbar.apply {
             setLogo(R.mipmap.icon_launcher)
-            title = "Mercari"
+            title = getString(R.string.toolbar_name)
         }
         setSupportActionBar(toolbar)
         ViewCompat.setElevation(toolbar, 10f)
