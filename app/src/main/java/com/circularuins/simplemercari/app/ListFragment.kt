@@ -6,27 +6,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.circularuins.simplemercari.R
+import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
 
-    companion object {
-        private const val TYPE = "type"
+    private lateinit var requestType: String
 
-        fun newInstance(type: String): ListFragment {
+    companion object {
+        private const val REQUEST_TYPE = "request_type"
+
+        fun newInstance(requestType: String): ListFragment {
             val fragment = ListFragment()
             fragment.arguments = Bundle().apply {
-                putString(TYPE, type)
+                putString(REQUEST_TYPE, requestType)
             }
             return fragment
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requestType = arguments?.getString(REQUEST_TYPE,"") ?: ""
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
-        return view
+    ): View? = inflater.inflate(R.layout.fragment_list, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        sampleText.text = requestType
     }
 }

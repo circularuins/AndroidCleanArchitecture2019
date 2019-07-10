@@ -3,6 +3,8 @@ package com.circularuins.simplemercari.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.domain.model.Master
@@ -45,7 +47,20 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun setTab(masters: List<Master>) {
-        // TODO
+        val adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
+            override fun getCount(): Int {
+                return masters.size
+            }
+
+            override fun getItem(position: Int): Fragment {
+                return ListFragment.newInstance(masters[position].requestType)
+            }
+
+            override fun getPageTitle(position: Int): CharSequence? {
+                return masters[position].name
+            }
+        }
+        view_pager.adapter = adapter
     }
 
     override fun showError(error: Throwable) {
