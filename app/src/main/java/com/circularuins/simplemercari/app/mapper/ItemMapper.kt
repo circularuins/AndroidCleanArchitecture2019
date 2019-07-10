@@ -1,6 +1,8 @@
 package com.circularuins.simplemercari.app.mapper
 
 import com.circularuins.simplemercari.domain.model.Item
+import java.text.NumberFormat
+import java.util.Locale
 
 fun Item.convert(): com.circularuins.simplemercari.app.viewdata.Item {
     return com.circularuins.simplemercari.app.viewdata.Item(
@@ -9,7 +11,13 @@ fun Item.convert(): com.circularuins.simplemercari.app.viewdata.Item {
         status, // TODO: モデルでEnumへ変換する。ここはbooleanにする
         numLikes,
         numComments,
-        "$ $price", // TODO: カンマ入りの文字列にする。確かメソッドあったような・・
+        numToCurrency(price),
         photo
     )
+}
+
+fun numToCurrency(num: Int): String {
+    val format = NumberFormat.getCurrencyInstance(Locale.US)
+    format.maximumFractionDigits = 1
+    return format.format(num)
 }
