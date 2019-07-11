@@ -7,7 +7,7 @@ interface ListContract {
     interface View {
         fun showProgress()
         fun hideProgress()
-        fun setList(masters: List<Item>)
+        fun setList(items: List<Item>)
         fun showError(error: Throwable)
     }
 

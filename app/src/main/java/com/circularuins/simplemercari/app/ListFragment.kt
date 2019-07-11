@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.app.viewdata.Item
@@ -54,7 +55,7 @@ class ListFragment : Fragment(), ListContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sampleText.text = requestType
+        //sampleText.text = requestType
     }
 
     override fun showProgress() {
@@ -65,8 +66,10 @@ class ListFragment : Fragment(), ListContract.View {
         // TODO:
     }
 
-    override fun setList(masters: List<Item>) {
-        // TODO:
+    override fun setList(items: List<Item>) {
+        val context = context ?: return
+        item_list.adapter = ItemsAdapter(context, items)
+        item_list.layoutManager = GridLayoutManager(context, 2)
     }
 
     override fun showError(error: Throwable) {
