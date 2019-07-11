@@ -43,27 +43,22 @@ class ListFragment : Fragment(), ListContract.View {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
-
         (activity?.application as MercariApplication).component.inject(this)
-
-        // TODO: presenter生成もDaggerで
-        val presenter = ListPresenter(this, ListUseCase(repository))
-        presenter.start(requestType)
-
-        return view
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //sampleText.text = requestType
+        // TODO: presenter生成もDaggerで
+        val presenter = ListPresenter(this, ListUseCase(repository))
+        presenter.start(requestType)
     }
 
     override fun showProgress() {
-        // TODO:
+        progress_bar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        // TODO:
+        progress_bar.visibility = View.GONE
     }
 
     override fun setList(items: List<Item>) {

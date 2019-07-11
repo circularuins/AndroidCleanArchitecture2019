@@ -1,6 +1,7 @@
 package com.circularuins.simplemercari.app
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
@@ -39,11 +40,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showProgress() {
-        // TODO
+        progress_bar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        // TODO
+        progress_bar.visibility = View.GONE
     }
 
     override fun setTab(masters: List<Master>) {
