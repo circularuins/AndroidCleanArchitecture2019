@@ -17,7 +17,7 @@ class ListPresenter(
             .doAfterTerminate {
                 view.hideProgress()
             }
-            .map { it.map { item -> item.convert() } }
+            .map { it.map { item -> item.convert() } } // ViewDataへ変換
             .subscribe({
                 view.setList(it)
             }, {

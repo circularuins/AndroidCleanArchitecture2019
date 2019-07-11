@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.app.viewdata.Item
+import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -61,7 +62,7 @@ class ListFragment : Fragment(), ListContract.View {
         progress_bar.visibility = View.GONE
     }
 
-    override fun setList(items: List<Item>) {
+    override fun setList(items: List<ListViewData>) {
         val context = context ?: return
         item_list.adapter = ItemsAdapter(context, items)
         item_list.layoutManager = GridLayoutManager(context, 2)

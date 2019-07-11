@@ -1,13 +1,13 @@
 package com.circularuins.simplemercari.app
 
-import com.circularuins.simplemercari.app.viewdata.Item
+import com.circularuins.simplemercari.app.viewdata.ListViewData
 
 interface ListContract {
 
     interface View {
         fun showProgress()
         fun hideProgress()
-        fun setList(items: List<Item>)
+        fun setList(items: List<ListViewData>)
         fun showError(error: Throwable)
     }
 

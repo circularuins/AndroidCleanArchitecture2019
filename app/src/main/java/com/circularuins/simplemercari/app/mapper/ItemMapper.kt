@@ -4,6 +4,9 @@ import com.circularuins.simplemercari.domain.model.Item
 import java.text.NumberFormat
 import java.util.Locale
 
+/**
+ * Item(Model) -> Item(ViewData)への変換ロジック
+ */
 fun Item.convert(): com.circularuins.simplemercari.app.viewdata.Item {
     return com.circularuins.simplemercari.app.viewdata.Item(
         id,

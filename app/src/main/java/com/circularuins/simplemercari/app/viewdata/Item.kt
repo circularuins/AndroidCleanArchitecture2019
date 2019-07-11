@@ -15,4 +15,7 @@ data class Item(
     val price: String,
 
     val photo: String
-)
+) : ListViewData {
+    override val type: ListViewType
+        get() = ListViewType.Item
+}
