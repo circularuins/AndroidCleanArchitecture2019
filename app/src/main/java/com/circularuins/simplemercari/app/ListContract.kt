@@ -1,19 +1,18 @@
 package com.circularuins.simplemercari.app
 
-import com.circularuins.simplemercari.domain.model.Master
+import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.uber.autodispose.ScopeProvider
 
-interface MainContract {
+interface ListContract {
 
     interface View : ScopeProvider {
-        fun initToolBar()
         fun showProgress()
         fun hideProgress()
-        fun setTab(masters: List<Master>)
+        fun setList(items: List<ListViewData>)
         fun showError(error: Throwable)
     }
 
     interface Presenter {
-        fun start()
+        fun start(requestType: String)
     }
 }

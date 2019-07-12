@@ -6,7 +6,7 @@ data class Item(
 
     val name: String,
 
-    val status: String,
+    val status: Status,
 
     val numLikes: Int,
 
@@ -15,4 +15,15 @@ data class Item(
     val price: Int,
 
     val photo: String
-)
+) {
+    enum class Status(val rawValue: String) {
+        OnSale("on_sale"),
+        SoldOut("sold_out"),
+        None("");
+
+        companion object {
+            fun typeOf(str: String): Status =
+                values().first {it.rawValue == str}
+        }
+    }
+}
