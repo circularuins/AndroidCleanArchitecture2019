@@ -1,10 +1,11 @@
 package com.circularuins.simplemercari.app
 
 import com.circularuins.simplemercari.domain.model.Master
+import com.uber.autodispose.ScopeProvider
 
 interface MainContract {
 
-    interface View {
+    interface View : ScopeProvider {
         fun initToolBar()
         fun showProgress()
         fun hideProgress()

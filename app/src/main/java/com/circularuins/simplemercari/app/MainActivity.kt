@@ -2,7 +2,6 @@ package com.circularuins.simplemercari.app
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -11,13 +10,20 @@ import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
+import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity :  RxAppCompatActivity(), MainContract.View {
 
     @Inject
     lateinit var repository: MasterRepository
+
+    override fun requestScope(): CompletableSource {
+        return AndroidLifecycleScopeProvider.from(this).requestScope()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

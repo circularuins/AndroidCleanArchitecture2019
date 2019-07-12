@@ -3,6 +3,7 @@ package com.circularuins.simplemercari.app
 import android.annotation.SuppressLint
 import com.circularuins.simplemercari.app.mapper.convert
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
+import com.uber.autodispose.autoDisposable
 
 class ListPresenter(
     private val view: ListContract.View,
@@ -18,6 +19,7 @@ class ListPresenter(
                 view.hideProgress()
             }
             .map { it.map { item -> item.convert() } } // ViewDataへ変換
+            .autoDisposable(view)
             .subscribe({
                 view.setList(it)
             }, {

@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
-import com.circularuins.simplemercari.app.viewdata.Item
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
+import com.trello.rxlifecycle2.components.support.RxFragment
+import com.ubercab.autodispose.rxlifecycle.RxLifecycleInterop
+import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class ListFragment : Fragment(), ListContract.View {
+class ListFragment : RxFragment(), ListContract.View {
 
     private lateinit var requestType: String
 
@@ -32,6 +33,10 @@ class ListFragment : Fragment(), ListContract.View {
             }
             return fragment
         }
+    }
+
+    override fun requestScope(): CompletableSource {
+        return RxLifecycleInterop.from(this).requestScope()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

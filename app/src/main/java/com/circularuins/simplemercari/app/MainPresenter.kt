@@ -2,6 +2,7 @@ package com.circularuins.simplemercari.app
 
 import android.annotation.SuppressLint
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
+import com.uber.autodispose.autoDisposable
 
 class MainPresenter(
     private val view: MainContract.View,
@@ -17,6 +18,7 @@ class MainPresenter(
             .doAfterTerminate {
                 view.hideProgress()
             }
+            .autoDisposable(view)
             .subscribe({
                 view.setTab(it)
             }, {
