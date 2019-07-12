@@ -23,11 +23,12 @@ class ItemsAdapter(
 
     override fun getItemViewType(position: Int): Int = items[position].type.rawValue
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = inflator.inflate(R.layout.items_list_row, parent, false)
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when(ListViewType.typeOf(viewType)) {
-            ListViewType.Item -> return ItemViewHolder(view, context)
+            ListViewType.Item -> {
+                val view = inflator.inflate(R.layout.items_list_row, parent, false)
+                return ItemViewHolder(view, context)
+            }
         }
     }
 
