@@ -1,11 +1,17 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.main
 
 import android.annotation.SuppressLint
+import android.content.Context
+import com.circularuins.simplemercari.app.ApiErrorView
+import com.circularuins.simplemercari.app.BaseApiSingleObserver
+import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
 import com.uber.autodispose.autoDisposable
 
 class MainPresenter(
+    private val context: Context,
     private val view: MainContract.View,
+    private val errorView: ApiErrorView,
     private val useCase: StartUseCase
 ) : MainContract.Presenter {
 
@@ -19,10 +25,10 @@ class MainPresenter(
                 view.hideProgress()
             }
             .autoDisposable(view)
-            .subscribe({
-                view.setTab(it)
-            }, {
-                view.showError(it)
+            .subscribe(object : BaseApiSingleObserver<List<Master>>(errorView, context) {
+                override fun onSuccess(it: List<Master>) {
+                    view.setTab(it)
+                }
             })
     }
 }

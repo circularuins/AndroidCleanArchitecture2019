@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SimpleMercari</string>
     <string name="toolbar_name">Mercari</string>
+    <string name="message_error_network">通信環境に問題があります</string>
+    <string name="message_error_unexpected">予期せぬエラーが発生しました</string>
+    <string name="message_error_server">サーバーでエラーが発生しました</string>
+    <string name="label_reconnect">再接続</string>
 </resources>
