@@ -2,11 +2,13 @@ package com.circularuins.simplemercari.app.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
+import com.circularuins.simplemercari.app.ApiErrorView
 import com.circularuins.simplemercari.app.list.ListFragment
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository
@@ -17,7 +19,7 @@ import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity :  RxAppCompatActivity(), MainContract.View {
+class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
 
     @Inject
     lateinit var repository: MasterRepository
@@ -33,7 +35,7 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View {
         (application as MercariApplication).component.inject(this)
 
         // TODO: presenter生成もDaggerで
-        val presenter = MainPresenter(this, StartUseCase(repository))
+        val presenter = MainPresenter(this, this, this, StartUseCase(repository))
         presenter.start()
     }
 
@@ -72,7 +74,11 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View {
         tab_layout.setupWithViewPager(view_pager)
     }
 
-    override fun showError(error: Throwable) {
-        // TODO
+    override fun showNetworkError() {
+        Toast.makeText(this, getString(R.string.message_error_network), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showError(error: String) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
     }
 }

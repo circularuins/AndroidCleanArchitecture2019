@@ -10,7 +10,6 @@ interface MainContract {
         fun showProgress()
         fun hideProgress()
         fun setTab(masters: List<Master>)
-        fun showError(error: Throwable)
     }
 
     interface Presenter {

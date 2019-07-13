@@ -9,7 +9,6 @@ interface ListContract {
         fun showProgress()
         fun hideProgress()
         fun setList(items: List<ListViewData>)
-        fun showError(error: Throwable)
     }
 
     interface Presenter {

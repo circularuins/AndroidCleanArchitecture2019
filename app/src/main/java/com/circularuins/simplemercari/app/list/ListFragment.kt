@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
+import com.circularuins.simplemercari.app.ApiErrorView
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
@@ -16,7 +18,7 @@ import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class ListFragment : RxFragment(), ListContract.View {
+class ListFragment : RxFragment(), ListContract.View, ApiErrorView {
 
     private lateinit var requestType: String
 
@@ -54,8 +56,9 @@ class ListFragment : RxFragment(), ListContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val context = context ?: return
         // TODO: presenter生成もDaggerで
-        val presenter = ListPresenter(this, ListUseCase(repository))
+        val presenter = ListPresenter(context, this, this, ListUseCase(repository))
         presenter.start(requestType)
     }
 
@@ -73,7 +76,11 @@ class ListFragment : RxFragment(), ListContract.View {
         item_list.layoutManager = GridLayoutManager(context, 2)
     }
 
-    override fun showError(error: Throwable) {
-        // TODO:
+    override fun showNetworkError() {
+        Toast.makeText(context, getString(R.string.message_error_network), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showError(error: String) {
+        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 }
