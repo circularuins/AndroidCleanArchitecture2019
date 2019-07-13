@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.list
 
 import android.annotation.SuppressLint
 import com.circularuins.simplemercari.app.mapper.convert

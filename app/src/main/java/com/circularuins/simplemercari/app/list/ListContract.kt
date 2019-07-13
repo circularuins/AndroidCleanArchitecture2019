@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.list
 
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.uber.autodispose.ScopeProvider

@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.main
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
+import com.circularuins.simplemercari.app.list.ListFragment
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository
 import com.circularuins.simplemercari.domain.usecase.StartUseCase

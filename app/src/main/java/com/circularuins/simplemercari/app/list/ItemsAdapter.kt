@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.list
 
 import android.content.Context
 import android.view.LayoutInflater

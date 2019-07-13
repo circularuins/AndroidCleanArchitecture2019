@@ -1,7 +1,7 @@
 package com.circularuins.simplemercari.di
 
-import com.circularuins.simplemercari.app.ListFragment
-import com.circularuins.simplemercari.app.MainActivity
+import com.circularuins.simplemercari.app.list.ListFragment
+import com.circularuins.simplemercari.app.main.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 

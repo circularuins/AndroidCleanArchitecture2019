@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.main
 
 import com.circularuins.simplemercari.domain.model.Master
 import com.uber.autodispose.ScopeProvider

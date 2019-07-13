@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.main
 
 import android.annotation.SuppressLint
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
