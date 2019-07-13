@@ -2,7 +2,6 @@ package com.circularuins.simplemercari.app.main
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -13,6 +12,7 @@ import com.circularuins.simplemercari.app.list.ListFragment
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
+import com.google.android.material.snackbar.Snackbar
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import io.reactivex.CompletableSource
@@ -23,6 +23,8 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
 
     @Inject
     lateinit var repository: MasterRepository
+
+    lateinit var presenter: MainPresenter
 
     override fun requestScope(): CompletableSource {
         return AndroidLifecycleScopeProvider.from(this).requestScope()
@@ -35,7 +37,7 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
         (application as MercariApplication).component.inject(this)
 
         // TODO: presenter生成もDaggerで
-        val presenter = MainPresenter(this, this, this, StartUseCase(repository))
+        presenter = MainPresenter(this, this, this, StartUseCase(repository))
         presenter.start()
     }
 
@@ -75,10 +77,22 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
     }
 
     override fun showNetworkError() {
-        Toast.makeText(this, getString(R.string.message_error_network), Toast.LENGTH_LONG).show()
+        showSnackBar(getString(R.string.message_error_network))
     }
 
     override fun showError(error: String) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+        showSnackBar(error)
+    }
+
+    private fun showSnackBar(message: String) {
+        val snackBar = Snackbar.make(
+            parent_constraint,
+            message,
+            Snackbar.LENGTH_INDEFINITE
+        )
+        snackBar.setAction(getString(R.string.label_reconnect)) {
+            presenter.start()
+        }
+        snackBar.show()
     }
 }
