@@ -7,6 +7,9 @@ import com.circularuins.simplemercari.infra.rest.ApiClient
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
+/**
+ * 商品レポジトリの実装クラス
+ */
 class ItemRepositoryImpl(private val client: ApiClient,
     private val subscribe: Scheduler,
     private val observe: Scheduler) : ItemRepository {

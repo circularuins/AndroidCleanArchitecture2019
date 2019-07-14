@@ -9,6 +9,9 @@ import com.circularuins.simplemercari.app.viewdata.Item
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import com.uber.autodispose.autoDisposable
 
+/**
+ * 商品一覧画面のビューロジック
+ */
 class ItemListPresenter(
     private val context: Context,
     private val view: ItemListContract.View,

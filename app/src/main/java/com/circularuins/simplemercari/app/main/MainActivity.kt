@@ -19,11 +19,15 @@ import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
+/**
+ * メイン画面
+ */
 class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
 
     @Inject
     lateinit var presenter: MainContract.Presenter
 
+    // 非同期処理で参照するライフサイクルのスコープ
     override fun requestScope(): CompletableSource {
         return AndroidLifecycleScopeProvider.from(this).requestScope()
     }

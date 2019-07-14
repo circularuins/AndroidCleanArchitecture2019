@@ -18,6 +18,9 @@ import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
+/**
+ * 商品一覧画面
+ */
 class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
 
     private lateinit var requestType: String
@@ -37,6 +40,7 @@ class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
         }
     }
 
+    // 非同期処理で参照するライフサイクルのスコープ
     override fun requestScope(): CompletableSource {
         return RxLifecycleInterop.from(this).requestScope()
     }

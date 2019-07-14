@@ -6,6 +6,9 @@ import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.HttpException
 import java.io.IOException
 
+/**
+ * 通信処理を購読するObserverの基底クラス
+ */
 abstract class BaseApiSingleObserver<T>(
     private val apiErrorView: ApiErrorView,
     private val context: Context

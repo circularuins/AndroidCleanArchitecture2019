@@ -8,6 +8,9 @@ import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
 import com.uber.autodispose.autoDisposable
 
+/**
+ * メイン画面のビューロジック
+ */
 class MainPresenter(
     private val context: Context,
     private val view: MainContract.View,

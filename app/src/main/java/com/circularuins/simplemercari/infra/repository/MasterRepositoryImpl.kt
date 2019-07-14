@@ -7,6 +7,9 @@ import com.circularuins.simplemercari.infra.rest.ApiClient
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
+/**
+ * マスターレポジトリの実装クラス
+ */
 class MasterRepositoryImpl(private val client: ApiClient,
     private val subscribe: Scheduler,
     private val observe: Scheduler) : MasterRepository {

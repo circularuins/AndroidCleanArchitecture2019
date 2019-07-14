@@ -13,6 +13,9 @@ import com.circularuins.simplemercari.app.viewdata.Item
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.circularuins.simplemercari.app.viewdata.ListViewType
 
+/**
+ * 商品一覧リストのアダプター
+ */
 class ItemsAdapter(
     private val context: Context,
     private val items: List<ListViewData>
@@ -39,6 +42,9 @@ class ItemsAdapter(
         }
     }
 
+    /**
+     * 商品セル用のViewHolder
+     */
     class ItemViewHolder(
         private val view: View,
         private val context: Context,
@@ -47,7 +53,8 @@ class ItemsAdapter(
         private val soldOut: ImageView = view.findViewById(R.id.image_sold_out),
         private val name: TextView = view.findViewById(R.id.text_name),
         private val like: TextView = view.findViewById(R.id.text_like),
-        private val comment: TextView = view.findViewById(R.id.text_comment)) : RecyclerView.ViewHolder(view) {
+        private val comment: TextView = view.findViewById(R.id.text_comment)
+    ) : RecyclerView.ViewHolder(view) {
 
         fun setData(item: Item) {
             // テキスト
