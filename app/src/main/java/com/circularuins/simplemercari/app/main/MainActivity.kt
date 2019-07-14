@@ -9,9 +9,9 @@ import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.app.common.ApiErrorView
 import com.circularuins.simplemercari.app.list.ListFragment
+import com.circularuins.simplemercari.di.MainModule
+import com.circularuins.simplemercari.di.NetModule
 import com.circularuins.simplemercari.domain.model.Master
-import com.circularuins.simplemercari.domain.repository.MasterRepository
-import com.circularuins.simplemercari.domain.usecase.StartUseCase
 import com.google.android.material.snackbar.Snackbar
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
@@ -22,9 +22,7 @@ import javax.inject.Inject
 class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
 
     @Inject
-    lateinit var repository: MasterRepository
-
-    lateinit var presenter: MainPresenter
+    lateinit var presenter: MainContract.Presenter
 
     override fun requestScope(): CompletableSource {
         return AndroidLifecycleScopeProvider.from(this).requestScope()
@@ -34,10 +32,14 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        (application as MercariApplication).component.inject(this)
+        (application as MercariApplication)
+            .component
+            .plus(
+                MainModule(this, this, this),
+                NetModule()
+            )
+            .inject(this)
 
-        // TODO: presenter生成もDaggerで
-        presenter = MainPresenter(this, this, this, StartUseCase(repository))
         presenter.start()
     }
 

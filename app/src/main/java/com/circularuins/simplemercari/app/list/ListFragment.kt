@@ -9,8 +9,8 @@ import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.app.common.ApiErrorView
 import com.circularuins.simplemercari.app.viewdata.ListViewData
-import com.circularuins.simplemercari.domain.repository.ItemRepository
-import com.circularuins.simplemercari.domain.usecase.ListUseCase
+import com.circularuins.simplemercari.di.ListModule
+import com.circularuins.simplemercari.di.NetModule
 import com.google.android.material.snackbar.Snackbar
 import com.trello.rxlifecycle2.components.support.RxFragment
 import com.ubercab.autodispose.rxlifecycle.RxLifecycleInterop
@@ -23,9 +23,7 @@ class ListFragment : RxFragment(), ListContract.View, ApiErrorView {
     private lateinit var requestType: String
 
     @Inject
-    lateinit var repository: ItemRepository
-
-    lateinit var presenter: ListPresenter
+    lateinit var presenter: ListContract.Presenter
 
     companion object {
         private const val REQUEST_TYPE = "request_type"
@@ -53,14 +51,17 @@ class ListFragment : RxFragment(), ListContract.View, ApiErrorView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity?.application as MercariApplication).component.inject(this)
+        (activity?.application as MercariApplication)
+            .component
+            .plus(
+                ListModule(context!!, this, this),
+                NetModule()
+            )
+            .inject(this)
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val context = context ?: return
-        // TODO: presenter生成もDaggerで
-        presenter = ListPresenter(context, this, this, ListUseCase(repository))
         presenter.start(requestType)
     }
 

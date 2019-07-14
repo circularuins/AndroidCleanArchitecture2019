@@ -1,14 +1,19 @@
 package com.circularuins.simplemercari.di
 
-import com.circularuins.simplemercari.app.list.ListFragment
-import com.circularuins.simplemercari.app.main.MainActivity
+import com.circularuins.simplemercari.MercariApplication
 import dagger.Component
 import javax.inject.Singleton
 
+/**
+ * アプリケーションレベルの依存性注入
+ */
 @Singleton
-@Component(modules = [NetModule::class])
+@Component(modules = [AppModule::class])
 interface AppComponent {
 
-    fun inject(mainActivity: MainActivity)
-    fun inject(listFragment: ListFragment)
+    fun inject(application: MercariApplication)
+
+    fun plus(mainModule: MainModule, netModule: NetModule): MainComponent
+
+    fun plus(listModule: ListModule, netModule: NetModule): ListComponent
 }
