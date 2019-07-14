@@ -2,12 +2,15 @@ package com.circularuins.simplemercari.app.main
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.circularuins.simplemercari.app.ApiErrorView
-import com.circularuins.simplemercari.app.BaseApiSingleObserver
+import com.circularuins.simplemercari.app.common.ApiErrorView
+import com.circularuins.simplemercari.app.common.BaseApiSingleObserver
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.usecase.StartUseCase
 import com.uber.autodispose.autoDisposable
 
+/**
+ * メイン画面のビューロジック
+ */
 class MainPresenter(
     private val context: Context,
     private val view: MainContract.View,

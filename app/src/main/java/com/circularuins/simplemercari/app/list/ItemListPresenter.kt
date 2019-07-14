@@ -2,19 +2,22 @@ package com.circularuins.simplemercari.app.list
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.circularuins.simplemercari.app.ApiErrorView
-import com.circularuins.simplemercari.app.BaseApiSingleObserver
+import com.circularuins.simplemercari.app.common.ApiErrorView
+import com.circularuins.simplemercari.app.common.BaseApiSingleObserver
 import com.circularuins.simplemercari.app.mapper.convert
 import com.circularuins.simplemercari.app.viewdata.Item
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import com.uber.autodispose.autoDisposable
 
-class ListPresenter(
+/**
+ * 商品一覧画面のビューロジック
+ */
+class ItemListPresenter(
     private val context: Context,
-    private val view: ListContract.View,
+    private val view: ItemListContract.View,
     private val errorView: ApiErrorView,
     private val useCase: ListUseCase
-) : ListContract.Presenter {
+) : ItemListContract.Presenter {
 
     @SuppressLint("CheckResult")
     override fun start(requestType: String) {
