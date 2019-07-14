@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
-import com.circularuins.simplemercari.app.ApiErrorView
+import com.circularuins.simplemercari.app.common.ApiErrorView
 import com.circularuins.simplemercari.app.list.ListFragment
 import com.circularuins.simplemercari.domain.model.Master
 import com.circularuins.simplemercari.domain.repository.MasterRepository

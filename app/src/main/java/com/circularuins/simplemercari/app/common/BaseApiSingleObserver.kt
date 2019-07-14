@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.app
+package com.circularuins.simplemercari.app.common
 
 import android.content.Context
 import com.circularuins.simplemercari.R

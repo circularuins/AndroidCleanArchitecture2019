@@ -1,7 +1,7 @@
 package com.circularuins.simplemercari.app.list
 
 import android.content.Context
-import com.circularuins.simplemercari.app.ApiErrorView
+import com.circularuins.simplemercari.app.common.ApiErrorView
 import com.circularuins.simplemercari.app.mapper.convert
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import com.nhaarman.mockito_kotlin.any

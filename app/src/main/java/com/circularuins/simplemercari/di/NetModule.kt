@@ -2,7 +2,7 @@ package com.circularuins.simplemercari.di
 
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.repository.MasterRepository
-import com.circularuins.simplemercari.infra.SchedulerProvider
+import com.circularuins.simplemercari.infra.common.SchedulerProvider
 import com.circularuins.simplemercari.infra.repository.ItemRepositoryImpl
 import com.circularuins.simplemercari.infra.repository.MasterRepositoryImpl
 import com.circularuins.simplemercari.infra.rest.ApiClient
@@ -40,15 +40,18 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideSchedulerProvider(): SchedulerProvider = SchedulerProvider()
+    fun provideSchedulerProvider(): SchedulerProvider =
+        SchedulerProvider()
 
     @Provides
     fun provideMasterRepository(client: ApiClient,
-        schedulerProvider: SchedulerProvider): MasterRepository =
+        schedulerProvider: SchedulerProvider
+    ): MasterRepository =
         MasterRepositoryImpl(client, schedulerProvider.io, schedulerProvider.ui)
 
     @Provides
     fun provideItemRepository(client: ApiClient,
-        schedulerProvider: SchedulerProvider): ItemRepository =
+        schedulerProvider: SchedulerProvider
+    ): ItemRepository =
         ItemRepositoryImpl(client, schedulerProvider.io, schedulerProvider.ui)
 }

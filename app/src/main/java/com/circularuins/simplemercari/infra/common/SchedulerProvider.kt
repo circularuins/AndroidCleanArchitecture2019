@@ -1,4 +1,4 @@
-package com.circularuins.simplemercari.infra
+package com.circularuins.simplemercari.infra.common
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
-import com.circularuins.simplemercari.app.ApiErrorView
+import com.circularuins.simplemercari.app.common.ApiErrorView
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
