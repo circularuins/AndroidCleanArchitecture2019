@@ -9,6 +9,9 @@ import org.junit.Before
 import org.junit.Test
 import javax.inject.Inject
 
+/**
+ * マスターデータ取得Repositoryのテスト
+ */
 class MasterRepositoryImplTest : BaseRestRepositoryTest() {
 
     @Inject
@@ -36,12 +39,19 @@ class MasterRepositoryImplTest : BaseRestRepositoryTest() {
             .test()
             .assertComplete()
             .values()[0]
+
+        // jsonを適切にパースし、モデルに変換できているか
         assertEquals(masters[0].name, "All")
         assertEquals(masters[0].requestType, "all")
         assertEquals(masters[1].name, "Men")
         assertEquals(masters[1].requestType, "men")
         assertEquals(masters[2].name, "Women")
         assertEquals(masters[2].requestType, "women")
+
+        // 正しいリクエストが発行できているか
+        val request = server.takeRequest()
+        assertEquals("GET", request.method)
+        assertEquals("/master.json", request.path)
     }
 
     private val masterJson: String
