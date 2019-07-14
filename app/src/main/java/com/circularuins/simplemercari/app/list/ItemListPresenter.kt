@@ -9,12 +9,12 @@ import com.circularuins.simplemercari.app.viewdata.Item
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import com.uber.autodispose.autoDisposable
 
-class ListPresenter(
+class ItemListPresenter(
     private val context: Context,
-    private val view: ListContract.View,
+    private val view: ItemListContract.View,
     private val errorView: ApiErrorView,
     private val useCase: ListUseCase
-) : ListContract.Presenter {
+) : ItemListContract.Presenter {
 
     @SuppressLint("CheckResult")
     override fun start(requestType: String) {

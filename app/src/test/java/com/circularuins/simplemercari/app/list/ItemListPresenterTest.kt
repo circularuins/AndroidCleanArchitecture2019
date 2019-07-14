@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations
 /**
  * リスト画面のビューロジックのテスト
  */
-class ListPresenterTest {
+class ItemListPresenterTest {
 
     private val DUMMY_STRING = "dummy"
     private val item = com.circularuins.simplemercari.domain.model.Item(
@@ -28,7 +28,7 @@ class ListPresenterTest {
     private val DUMMY_LIST_MODEL = listOf(item)
     private val DUMMY_LIST_VIEWDATA = listOf(item.convert())
 
-    private var view = mock<ListContract.View> {
+    private var view = mock<ItemListContract.View> {
         on { requestScope() } doReturn Mockito.mock(CompletableSource::class.java)
     }
 
@@ -49,7 +49,7 @@ class ListPresenterTest {
 
     @Test
     fun start() {
-        val presenter = ListPresenter(
+        val presenter = ItemListPresenter(
             context, view, errorView, useCase
         )
         presenter.start(DUMMY_STRING)

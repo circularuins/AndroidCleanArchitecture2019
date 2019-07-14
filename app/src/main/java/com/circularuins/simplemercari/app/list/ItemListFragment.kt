@@ -18,12 +18,12 @@ import io.reactivex.CompletableSource
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class ItemListFragment : RxFragment(), ListContract.View, ApiErrorView {
+class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
 
     private lateinit var requestType: String
 
     @Inject
-    lateinit var presenter: ListContract.Presenter
+    lateinit var presenter: ItemListContract.Presenter
 
     companion object {
         private const val REQUEST_TYPE = "request_type"

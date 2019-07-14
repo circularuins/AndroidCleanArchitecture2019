@@ -3,7 +3,7 @@ package com.circularuins.simplemercari.app.list
 import com.circularuins.simplemercari.app.viewdata.ListViewData
 import com.uber.autodispose.ScopeProvider
 
-interface ListContract {
+interface ItemListContract {
 
     interface View : ScopeProvider {
         fun showProgress()

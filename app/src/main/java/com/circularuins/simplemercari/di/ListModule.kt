@@ -2,8 +2,8 @@ package com.circularuins.simplemercari.di
 
 import android.content.Context
 import com.circularuins.simplemercari.app.common.ApiErrorView
-import com.circularuins.simplemercari.app.list.ListContract
-import com.circularuins.simplemercari.app.list.ListPresenter
+import com.circularuins.simplemercari.app.list.ItemListContract
+import com.circularuins.simplemercari.app.list.ItemListPresenter
 import com.circularuins.simplemercari.domain.repository.ItemRepository
 import com.circularuins.simplemercari.domain.usecase.ListUseCase
 import dagger.Module
@@ -15,7 +15,7 @@ import dagger.Provides
 @Module
 class ListModule(
     private val context: Context,
-    private val view: ListContract.View,
+    private val view: ItemListContract.View,
     private val errorView: ApiErrorView
 ) {
 
@@ -24,6 +24,6 @@ class ListModule(
         ListUseCase(itemRepository)
 
     @Provides
-    fun provideListPresenter(useCase: ListUseCase): ListContract.Presenter =
-        ListPresenter(context, view, errorView, useCase)
+    fun provideListPresenter(useCase: ListUseCase): ItemListContract.Presenter =
+        ItemListPresenter(context, view, errorView, useCase)
 }
