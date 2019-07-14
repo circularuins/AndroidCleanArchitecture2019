@@ -28,6 +28,9 @@ class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
     @Inject
     lateinit var presenter: ItemListContract.Presenter
 
+    // 画面回転時のために商品リストを保持する
+    private var storedItems = listOf<ListViewData>()
+
     companion object {
         private const val REQUEST_TYPE = "request_type"
 
@@ -47,6 +50,9 @@ class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // 画面開店時にフラグメントを再生成しない
+        retainInstance = true
 
         requestType = arguments?.getString(REQUEST_TYPE,"") ?: ""
 
@@ -69,6 +75,13 @@ class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // 商品リストが保存されていた場合
+        if (storedItems.isNotEmpty()) {
+            // 保存されたリストを表示する
+            setList(storedItems)
+            return
+        }
+
         presenter.start(requestType)
     }
 
@@ -81,6 +94,9 @@ class ItemListFragment : RxFragment(), ItemListContract.View, ApiErrorView {
     }
 
     override fun setList(items: List<ListViewData>) {
+        // 画面回転時のために商品リストを保持しておく
+        storedItems = items
+
         val context = context ?: return
         item_list.adapter = ItemsAdapter(context, items)
         item_list.layoutManager = GridLayoutManager(context, 2)
