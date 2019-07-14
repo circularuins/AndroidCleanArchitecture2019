@@ -1,7 +1,8 @@
 # 簡易版 Mercari アプリ
 
-## 仕様と成果物
+## 成果
 [課題の仕様](https://github.com/m-rec/a42a09b1d39a68e43610a2cf54d9a5bbfaa0ec3a/blob/master/SKILL_TEST.ja.md#%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E6%9C%80%E4%BD%8E%E9%99%90%E3%81%AE%E4%BB%95%E6%A7%98)
+[進捗状況](https://github.com/m-rec/a42a09b1d39a68e43610a2cf54d9a5bbfaa0ec3a/issues/2)
 
 <img src="https://user-images.githubusercontent.com/1131119/61189092-43edc400-a6c3-11e9-95ca-681e59f4eb24.png" width="200px">
 
