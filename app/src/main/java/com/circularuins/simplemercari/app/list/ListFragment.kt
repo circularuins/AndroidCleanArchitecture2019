@@ -43,7 +43,17 @@ class ListFragment : RxFragment(), ListContract.View, ApiErrorView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         requestType = arguments?.getString(REQUEST_TYPE,"") ?: ""
+
+        val context = context ?: return
+        (activity?.application as MercariApplication)
+            .component
+            .plus(
+                ListModule(context, this, this),
+                NetModule()
+            )
+            .inject(this)
     }
 
     override fun onCreateView(
@@ -51,13 +61,6 @@ class ListFragment : RxFragment(), ListContract.View, ApiErrorView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity?.application as MercariApplication)
-            .component
-            .plus(
-                ListModule(context!!, this, this),
-                NetModule()
-            )
-            .inject(this)
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
