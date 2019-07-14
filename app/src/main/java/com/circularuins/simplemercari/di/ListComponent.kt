@@ -1,5 +1,6 @@
 package com.circularuins.simplemercari.di
 
+import com.circularuins.simplemercari.app.list.ItemListFragment
 import dagger.Subcomponent
 
 /**
@@ -7,5 +8,5 @@ import dagger.Subcomponent
  */
 @Subcomponent(modules = [ListModule::class, NetModule::class])
 interface ListComponent {
-    fun inject(fragment: com.circularuins.simplemercari.app.list.ListFragment)
+    fun inject(fragment: ItemListFragment)
 }

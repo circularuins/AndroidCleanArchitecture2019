@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.circularuins.simplemercari.MercariApplication
 import com.circularuins.simplemercari.R
 import com.circularuins.simplemercari.app.common.ApiErrorView
-import com.circularuins.simplemercari.app.list.ListFragment
+import com.circularuins.simplemercari.app.list.ItemListFragment
 import com.circularuins.simplemercari.di.MainModule
 import com.circularuins.simplemercari.di.NetModule
 import com.circularuins.simplemercari.domain.model.Master
@@ -67,7 +67,7 @@ class MainActivity :  RxAppCompatActivity(), MainContract.View, ApiErrorView {
             }
 
             override fun getItem(position: Int): Fragment {
-                return ListFragment.newInstance(masters[position].requestType)
+                return ItemListFragment.newInstance(masters[position].requestType)
             }
 
             override fun getPageTitle(position: Int): CharSequence? {
