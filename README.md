@@ -19,7 +19,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 
 #### なぜClean Architecure?
 - [こちらのパターンを採用](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- View、ビジネスロジック、インフラコード（通信、データ保存 etc）をコンポーネント化する
+- 表示、ビジネスロジック、インフラコード（通信、データ保存 etc）をコンポーネント化する
 - 依存関係が厳密に定義されていることで、以下の利点があり、大規模開発や長期メンテナンスに適している。
   - 最も重要なビジネスロジックをプラットフォームや外部環境非依存に保てるため、容易にUnitTestを書ける(Domain層)
   - 各層が疎結合なため、Viewやインフラの交換が容易（UnitTest時のMock化、キャッシュロジックの実装、Viewの切り替え etc..）
