@@ -49,6 +49,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 - データ変換ロジック（Repository,mapper）、UIロジック(Presenter)に対するユニットテストを完備
   - 今回は大きなビジネスロジックが存在しないため、UseCase/Modelはスルー
   - ビューのユニットテストはスルー（UIテストの方が優先度高）
+- ストアリリースを想定した、署名設定、難読化設定済
 - その他細かい要件については、[こちら](https://github.com/m-rec/a42a09b1d39a68e43610a2cf54d9a5bbfaa0ec3a/issues/2)も参照のこと
 
 ## 使用技術
