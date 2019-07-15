@@ -31,7 +31,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 
 - 3層の依存性の方向は、App -> Domain, Infra -> Domainとなっており、Domainはどこにも依存せず、循環依存や層を飛び越した依存（App,Infra間）もない
 - 各層ごとの基本データ構造が存在し（ViewData:App, Model:Domain, Data:Infra）、層をまたぐ際にmapperで適切なデータ構造に変換される
-  - Data->Infraのmapperは、腐敗防止層（ACL）の役割を兼ねる
+  - Data->Modelのmapperは、腐敗防止層（ACL）の役割を兼ねる
 
 ## 画面構成
 - MainActivity : エントリポイント
