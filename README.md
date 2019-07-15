@@ -27,7 +27,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
   - 各コンポーネントの役割が明確なため、チーム開発がやりやすくなり、再利用可能なプログラムが書きやすい
 
 ### 設計概要
-<img src="https://user-images.githubusercontent.com/1131119/61197305-20506b00-a70f-11e9-95d6-9af4f6bf68ca.png" width="800px">
+<img src="https://user-images.githubusercontent.com/1131119/61199405-ceacde00-a718-11e9-968e-8c9f591f67ac.png" width="800px">
 
 - 3層の依存性の方向は、App -> Domain, Infra -> Domainとなっており、Domainはどこにも依存せず、循環依存や層を飛び越した依存（App,Infra間）もない
 - 各層ごとの基本データ構造が存在し（ViewData:App, Model:Domain, Data:Infra）、層をまたぐ際にmapperで適切なデータ構造に変換される
