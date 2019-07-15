@@ -30,7 +30,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 <img src="https://user-images.githubusercontent.com/1131119/61197305-20506b00-a70f-11e9-95d6-9af4f6bf68ca.png" width="800px">
 
 - 3層の依存性の方向は、App -> Domain, Infra -> Domainとなっており、Domainはどこにも依存せず、循環依存や層を飛び越した依存（App,Infra間）もない
-- 各層ごとの基本データ構造が存在し（ViewData:App, Model:Domain, Data:Infra）、層をまたぐ際にmapperで適切なデータ構造に変換される。
+- 各層ごとの基本データ構造が存在し（ViewData:App, Model:Domain, Data:Infra）、層をまたぐ際にmapperで適切なデータ構造に変換される
   - Data->Infraのmapperは、腐敗防止層（ACL）の役割を兼ねる
 
 ### 画面構成
@@ -41,5 +41,25 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
   - パラメータを元にAPI通信を行い、取得したデータをRecyclerViewへ表示する
 
 ## ポイント
+- 層をまたいだデータの購読のために、Rxを使用
+- Activity/Fragment破棄による非同期処理の中断対策として、全ての通信処理でAutoDisposeを使用
+- 3層の依存性実現のためDIパターンを利用し、依存性管理にDaggerを使用
+- 画面回転対応のため、Fragmentの再生成を禁止
+- ConstraintLayoutで、機種や回転に対応したレイアウトを実現
+- データ変換ロジック（Repository,mapper）、UIロジック(Presenter)に対するユニットテストを完備
+  - 今回は大きなビジネスロジックが存在しないため、UseCase/Modelはスルー
+  - ビューのユニットテストはスルー（UIテストの方が優先度高）
 
 ## 使用技術
+#### 非同期処理
+- [RxKotlin](https://github.com/ReactiveX/RxKotlin)
+- [RxLifecycle2](https://github.com/trello/RxLifecycle)
+- [AutoDispose](https://github.com/uber/AutoDispose)
+#### 通信処理
+- [OkHttp3](https://github.com/square/okhttp/tree/master/okhttp/src/main/java/okhttp3)
+- [Retrofit2](https://square.github.io/retrofit/)
+### DI
+- [Dagger2](https://github.com/google/dagger)
+### その他
+- [Gson](https://github.com/google/gson)
+- [Glide](https://github.com/bumptech/glide)
