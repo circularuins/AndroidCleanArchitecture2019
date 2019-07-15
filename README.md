@@ -33,7 +33,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 - 各層ごとの基本データ構造が存在し（ViewData:App, Model:Domain, Data:Infra）、層をまたぐ際にmapperで適切なデータ構造に変換される
   - Data->Infraのmapperは、腐敗防止層（ACL）の役割を兼ねる
 
-### 画面構成
+## 画面構成
 - MainActivity : エントリポイント
   - API経由でマスターデータを取得
   - 取得したデータを元に、ViewPagerを生成し、子のフラグメントに必要なパラメータを渡す
@@ -49,6 +49,7 @@ MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチ�
 - データ変換ロジック（Repository,mapper）、UIロジック(Presenter)に対するユニットテストを完備
   - 今回は大きなビジネスロジックが存在しないため、UseCase/Modelはスルー
   - ビューのユニットテストはスルー（UIテストの方が優先度高）
+- その他細かい要件については、[こちら](https://github.com/m-rec/a42a09b1d39a68e43610a2cf54d9a5bbfaa0ec3a/issues/2)も参照のこと
 
 ## 使用技術
 #### 非同期処理
