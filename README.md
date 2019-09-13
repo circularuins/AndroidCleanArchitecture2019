@@ -1,7 +1,5 @@
 # MVP + CleanArchitecture のサンプル
 
-<img src="https://user-images.githubusercontent.com/1131119/61189092-43edc400-a6c3-11e9-95ca-681e59f4eb24.png" width="200px">
-
 ## 設計方針
 MVP(UIアーキテクチャ) + Clean Architecure(システムアーキテクチャ)を設計の基本方針とする。
 
